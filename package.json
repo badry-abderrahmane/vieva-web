@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "description": "Vieva Services marketing site",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "gen": "node scripts/generate.mjs",
+    "dev": "node scripts/generate.mjs && vite",
+    "build": "node scripts/generate.mjs && vite build",
+    "preview": "vite preview",
+    "check": "node scripts/check.mjs",
+    "api": "node server/index.mjs",
+    "e2e": "node scripts/e2e.mjs"
   },
   "type": "module",
   "dependencies": {
