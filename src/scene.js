@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
     function draw(){
       var gr=g.createLinearGradient(0,0,W,H); gr.addColorStop(0,'#0C2A1B'); gr.addColorStop(1,'#06110B');
       g.fillStyle=gr; g.fillRect(0,0,W,H);
-      g.fillStyle='#00BF63';
+      g.fillStyle='#00A857';
       var step=34, y, x;
       for (y=0;y<H+step;y+=step){ for (x=0;x<W+step;x+=step){
         var px = x + ((y/step)%2)*step/2, t = px/W*0.55 + y/H*0.45;
@@ -24,14 +24,14 @@ gsap.registerPlugin(ScrollTrigger);
         if (r>0.6){ g.beginPath(); g.arc(px,y,r,0,6.2832); g.fill(); }
       }}
       /* logo */
-      g.strokeStyle='#00BF63'; g.lineWidth=20; g.strokeRect(190,250,900,500);
-      g.fillStyle='#00BF63'; g.font='700 250px Poppins, Arial, sans-serif'; g.textBaseline='alphabetic';
+      g.strokeStyle='#00A857'; g.lineWidth=20; g.strokeRect(190,250,900,500);
+      g.fillStyle='#00A857'; g.font='700 250px Poppins, Arial, sans-serif'; g.textBaseline='alphabetic';
       spaced(g,'VIEVA',640,555,26);
-      g.fillStyle='#00BF63'; g.fillRect(350,708,580,86);
+      g.fillStyle='#00A857'; g.fillRect(350,708,580,86);
       g.fillStyle='#06110B'; g.font='600 54px Poppins, Arial, sans-serif';
       spaced(g,'SERVICES',640,771,14);
       /* ink band */
-      g.fillStyle='#00BF63'; g.fillRect(0,H-170,W,170);
+      g.fillStyle='#00A857'; g.fillRect(0,H-170,W,170);
       g.fillStyle='#06110B'; g.font='600 74px Poppins, Arial, sans-serif'; g.textAlign='left';
       g.fillText('Votre marque, en grand.',150,H-65);
       g.fillStyle='#06110B'; g.font='500 44px Poppins, Arial, sans-serif'; g.textAlign='right';
@@ -115,7 +115,7 @@ export function initScene(hero, reduce){
 
     /* vinyl roll */
     var rollWrap = new THREE.Group(), roll = new THREE.Group();
-    var rt = new THREE.CanvasTexture(stripeCanvas('#F2F7F3','#00BF63',9)); rt.wrapS = rt.wrapT = THREE.RepeatWrapping; rt.repeat.set(2,1);
+    var rt = new THREE.CanvasTexture(stripeCanvas('#F2F7F3','#00A857',9)); rt.wrapS = rt.wrapT = THREE.RepeatWrapping; rt.repeat.set(2,1);
     roll.add(new THREE.Mesh(new THREE.CylinderGeometry(0.44,0.44,2.5,56), new THREE.MeshPhongMaterial({map:rt,shininess:40,specular:0x99ffcc})));
     var core = new THREE.Mesh(new THREE.CylinderGeometry(0.17,0.17,2.8,32), new THREE.MeshPhongMaterial({color:0x06110b,shininess:60}));
     roll.add(core);
@@ -127,7 +127,7 @@ export function initScene(hero, reduce){
     var tro = new THREE.Group();
     var prof = [[0.0,0.0],[0.62,0.0],[0.66,0.1],[0.56,0.2],[0.2,0.32],[0.13,0.5],[0.14,0.85],[0.3,0.98],[0.62,1.35],[0.7,1.85],[0.6,1.9],[0.52,1.78],[0.0,1.78]].map(function(p){return new THREE.Vector2(p[0],p[1]);});
     tro.add(new THREE.Mesh(new THREE.LatheGeometry(prof,48), new THREE.MeshPhongMaterial({color:0xf2f7f3,shininess:110,specular:0xaaffdd,side:THREE.DoubleSide})));
-    var base = new THREE.Mesh(new THREE.CylinderGeometry(0.72,0.78,0.22,40), new THREE.MeshPhongMaterial({color:0x00bf63,shininess:80,specular:0xffffff}));
+    var base = new THREE.Mesh(new THREE.CylinderGeometry(0.72,0.78,0.22,40), new THREE.MeshPhongMaterial({color:0x00a857,shininess:80,specular:0xffffff}));
     base.position.y = -0.1; tro.add(base);
     [-1,1].forEach(function(s){
       var h = new THREE.Mesh(new THREE.TorusGeometry(0.34,0.05,12,32,Math.PI), new THREE.MeshPhongMaterial({color:0xf2f7f3,shininess:110}));
@@ -142,8 +142,8 @@ export function initScene(hero, reduce){
         [0,1,2,3,4,5].map(function(i){ return new THREE.MeshPhongMaterial(i===4?{map:new THREE.CanvasTexture(stripeCanvas(colA,colB,12)),shininess:40}:{color:0xf2f7f3,shininess:20}); }));
       m.position.set(x,y,z); m.rotation.y = ry; m.rotation.z = rz; group.add(m); return m;
     }
-    var p1 = panel('#06110B','#00BF63',-3.2,1.55,0.7,0.45,0.12);
-    var p2 = panel('#00BF63','#064A2C',3.7,1.7,0.4,-0.4,-0.1);
+    var p1 = panel('#06110B','#00A857',-3.2,1.55,0.7,0.45,0.12);
+    var p2 = panel('#00A857','#064A2C',3.7,1.7,0.4,-0.4,-0.1);
 
     var st = {tx:0,ty:0,mx:0,my:0,push:0,tpush:0,intro:reduce?1:0,scroll:0,visible:true,w:1,h:1,visW:1,visH:1,sc:1,px:0,py:0};
     function resize(){

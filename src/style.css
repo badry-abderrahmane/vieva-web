@@ -1,9 +1,9 @@
 /* Layout: brand-green world. A green hero holds a 3D print stand (waving tarp printed with the logo, vinyl roll, trophy, forex panels). Below: oversized service rows, ink and green bands, one deep-green stats strip. */
 :root{
   color-scheme: light;
-  --green:#00BF63;
-  --green-hi:#12D676;
-  --green-lo:#00A455;
+  --green:#00A857;
+  --green-hi:#12BE6A;
+  --green-lo:#008F49;
   --green-ink:#00663A;
   --green-deep:#064A2C;
   --green-dark:#04281A;

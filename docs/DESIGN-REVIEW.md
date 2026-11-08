@@ -31,3 +31,16 @@ Palette stays: green `#00BF63` (sampled from the supplied logo), ink `#06110B`, 
 ## What stays
 
 Oversized type with a variable-font hover effect, the printed 3D banner, service rows that invert to green, a deep-green stats strip, and the sector marquee. Motion respects `prefers-reduced-motion`.
+
+## Update: deeper brand green
+
+The brand green moved from `#00BF63` (sampled from the supplied logo screenshot) to `#00A857` to reduce glare on large areas and improve contrast.
+
+| Pair | Before | After |
+|---|---|---|
+| Ink on green | 7.9:1 | 6.2:1 (still AA) |
+| White on green | 2.4:1 | 3.1:1 (large text and icons only) |
+| Green on ink | 7.9:1 | 6.2:1 |
+| Green on deep green | 6.5:1 | 5.1:1 |
+
+The scale is now `--green #00A857`, `--green-hi #12BE6A`, `--green-lo #008F49`. The logo (nav, footer, `public/logo.svg`, banner texture) uses the same value. Small green text on paper still uses `--green-ink #00663A` (6.5:1).
