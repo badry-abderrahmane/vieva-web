@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
     var x = cx - w/2; g.textAlign = 'left';
     for (i=0;i<txt.length;i++){ g.fillText(txt[i], x, y); x += g.measureText(txt[i]).width + sp; }
   }
-  function bannerCanvas(){
+  function bannerCanvas(o){
     var W=2048, H=1216, c=document.createElement('canvas'); c.width=W; c.height=H;
     var g=c.getContext('2d');
     function draw(){
@@ -32,10 +32,11 @@ gsap.registerPlugin(ScrollTrigger);
       spaced(g,'SERVICES',640,771,14);
       /* ink band */
       g.fillStyle='#00A857'; g.fillRect(0,H-170,W,170);
-      g.fillStyle='#06110B'; g.font='600 74px Poppins, Arial, sans-serif'; g.textAlign='left';
-      g.fillText('Votre marque, en grand.',150,H-65);
-      g.fillStyle='#06110B'; g.font='500 44px Poppins, Arial, sans-serif'; g.textAlign='right';
-      g.fillText('Bâche · Vinyle · Forex',W-150,H-72);
+      var face = o.rtl ? '"IBM Plex Sans Arabic", Poppins, Arial, sans-serif' : 'Poppins, Arial, sans-serif';
+      g.fillStyle='#06110B'; g.font='600 74px '+face; g.textAlign=o.rtl?'right':'left';
+      g.fillText(o.banner,o.rtl?W-150:150,H-65);
+      g.fillStyle='#06110B'; g.font='500 44px '+face; g.textAlign=o.rtl?'left':'right';
+      g.fillText(o.bannerRight,o.rtl?150:W-150,H-72);
       /* hem + grommets */
       g.strokeStyle='rgba(0,191,99,.35)'; g.lineWidth=12; g.strokeRect(24,24,W-48,H-48);
       [[84,84],[W-84,84],[84,H-84],[W-84,H-84]].forEach(function(p){
@@ -87,7 +88,8 @@ gsap.registerPlugin(ScrollTrigger);
   '  gl_FragColor=vec4(col*diff+spec,1.0);',
   '}'].join('\n');
 
-export function initScene(hero, reduce){
+export function initScene(hero, reduce, opts){
+    opts = opts || {}; var sgn = opts.rtl ? -1 : 1;
     var mobile = window.matchMedia('(max-width:760px)').matches;
     var cv = document.getElementById('gl'), renderer;
     try { renderer = new THREE.WebGLRenderer({canvas:cv, antialias:!mobile, alpha:true}); }
@@ -100,11 +102,11 @@ export function initScene(hero, reduce){
     var pl = new THREE.PointLight(0x7dffc0,0.9,30); pl.position.set(4,-1,5); scene.add(pl);
 
     var group = new THREE.Group(); scene.add(group);
-    var bc = bannerCanvas();
+    var bc = bannerCanvas({rtl:!!opts.rtl, banner:opts.banner||'Votre marque, en grand.', bannerRight:opts.bannerRight||'Bâche · Vinyle · Forex'});
     var tex = new THREE.CanvasTexture(bc.canvas);
     tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
     if (document.fonts && document.fonts.load){
-      Promise.all([document.fonts.load('700 100px Poppins'),document.fonts.load('600 60px Poppins'),document.fonts.load('500 40px Poppins')])
+      Promise.all([document.fonts.load('700 100px Poppins'),document.fonts.load('600 60px Poppins'),document.fonts.load('500 40px Poppins')].concat(opts.rtl ? [document.fonts.load('600 60px "IBM Plex Sans Arabic"')] : []))
         .then(function(){ bc.redraw(); tex.needsUpdate = true; }).catch(function(){});
     }
     var U = { uTime:{value:0}, uMouse:{value:new THREE.Vector2(-5,-5)}, uPush:{value:0}, uTex:{value:tex} };
@@ -151,7 +153,7 @@ export function initScene(hero, reduce){
       renderer.setSize(st.w, st.h, false);
       cam.aspect = st.w/st.h; cam.updateProjectionMatrix();
       st.visH = 2*Math.tan(cam.fov*Math.PI/360)*cam.position.z; st.visW = st.visH*cam.aspect;
-      if (cam.aspect > 1.15){ st.sc = st.visW*0.55/9; st.px = st.visW*0.17; st.py = st.visH*0.02; }
+      if (cam.aspect > 1.15){ st.sc = st.visW*0.55/9; st.px = st.visW*0.17*sgn; st.py = st.visH*0.02; }
       else { st.sc = st.visW*0.9/9; st.px = 0; st.py = st.visH*0.24; }
     }
     resize(); window.addEventListener('resize', resize);
@@ -177,8 +179,8 @@ export function initScene(hero, reduce){
       var e = 1-Math.pow(1-st.intro,3);
       var s = st.sc*(0.8+0.2*e);
       group.scale.set(s,s,s);
-      group.position.set(st.px + (1-e)*1.4, st.py + st.scroll*1.4, 0);
-      group.rotation.y = -0.30 + st.mx*0.18 + st.scroll*0.4 + (1-e)*0.6;
+      group.position.set(st.px + sgn*(1-e)*1.4, st.py + st.scroll*1.4, 0);
+      group.rotation.y = sgn*(-0.30 + st.scroll*0.4 + (1-e)*0.6) + st.mx*0.18;
       group.rotation.x = 0.05 - st.my*0.10;
       if (!reduce){
         roll.rotation.y += dt*0.7;
