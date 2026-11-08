@@ -17,6 +17,8 @@ const url = (lang, path) => `${PREFIX}${prefix(lang)}${path}`;
 const abs = (lang, path) => `${SITE}${prefix(lang)}${path}`;
 
 const ICON = {
+  moon: '<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>',
+  sun: '<svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   arrow: '<svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>',
   phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
   wa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21z"/><path d="M9 9.5c.3 1.6 1.9 3.6 3.6 4.4l1.2-1.1 2 .9c-.2 1.3-1.2 2-2.3 1.8C10.7 15 8.6 12.7 8 10.2 7.8 9.1 8.5 8.1 9.8 8l.9 2-1.7-.5z"/></svg>',
@@ -31,6 +33,7 @@ const LEAD_TXT = {
 };
 
 /* ---------- shared fragments ---------- */
+const themeBtn = (lang) => `<button class="theme-btn" type="button" aria-label="${esc(UI[lang].theme)}" title="${esc(UI[lang].theme)}">${ICON.moon}${ICON.sun}</button>`;
 const logo = (lang, cls = '') => `<a class="logo ${cls}" href="${url(lang, '/')}" aria-label="${esc(UI[lang].siteName)}"><span class="logo-box"><b>VIEVA</b><i>SERVICES</i></span></a>`;
 
 function langLinks(lang, path) {
@@ -53,6 +56,7 @@ function header(lang, path, current) {
   </ul></nav>
   <div class="nav-r">
     ${langLinks(lang, path)}
+    ${themeBtn(lang)}
     <a class="basket-link" id="basketLink" href="${url(lang, '/devis/')}" data-label="${esc(t.basket)}">${esc(t.basket)} <b id="basketCount">0</b></a>
     <a class="btn g nav-cta" href="${url(lang, '/devis/')}" data-track="quote_click">${esc(t.quote)}</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="${esc(t.openMenu)}" data-open="${esc(t.openMenu)}" data-close="${esc(t.closeMenu)}"><span></span><span></span></button>
@@ -68,7 +72,7 @@ function header(lang, path, current) {
   </nav>
   <div class="drawer-foot">
     <a class="btn dark" href="${url(lang, '/devis/')}">${esc(t.quoteCta)}</a>
-    ${langLinks(lang, path)}
+    <div style="display:flex;gap:12px;align-items:center">${langLinks(lang, path)}${themeBtn(lang)}</div>
     <div class="mono">${CONTACT.phone}<br>${CONTACT.email}</div>
   </div>
 </div>`;
@@ -447,6 +451,7 @@ ${alts}
 <meta property="og:locale" content="${LOCALE[lang]}">
 <meta property="og:image" content="${SITE}/og.svg">
 <meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem('vieva-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="icon" href="${PREFIX}/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

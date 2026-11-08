@@ -60,6 +60,21 @@ try {
   if (process.env.E2E_VERBOSE) console.log('--- message ---\n' + decodeURIComponent(wa.split('text=')[1]) + '\n---');
   ok('WhatsApp message carries the contact name', decodeURIComponent(wa).includes('Test') && decodeURIComponent(wa).includes('a@b.co'), decodeURIComponent(wa).slice(0, 200));
 
+  // theme toggle
+  await go('/');
+  const th = () => ev('document.documentElement.dataset.theme');
+  const first = await th();
+  ok('theme is set on load', first === 'light' || first === 'dark', first);
+  const bg0 = await ev('getComputedStyle(document.body).backgroundColor');
+  await ev("document.querySelector('.nav .theme-btn').click()");
+  const second = await th();
+  ok('toggle flips the theme', second !== first, first + ' -> ' + second);
+  ok('toggle changes the page background', (await ev('getComputedStyle(document.body).backgroundColor')) !== bg0);
+  await go('/en/catalogue/');
+  ok('choice persists across pages', (await th()) === second);
+  await ev("document.querySelector('.nav .theme-btn').click()");
+  await ev("localStorage.removeItem('vieva-theme')");
+
   // mobile menu
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 2, mobile: true });
   await go('/');

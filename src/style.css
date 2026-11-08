@@ -38,8 +38,29 @@
   --gutter:max(clamp(16px,4vw,56px),env(safe-area-inset-left,0px));
   --gutter-r:max(clamp(16px,4vw,56px),env(safe-area-inset-right,0px));
 }
+/* dark: explicit choice (toggle) or system setting when nothing is chosen */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A1410;
+  --fg:#EAF3ED;
+  --mute:#9DB5A6;
+  --line:#223A2D;
+  --tint:#0F2218;
+  --surface:#111F17;
+  --green-text:#3DDC8A;
+  --btn-bg:#EAF3ED;
+  --btn-fg:#06110B;
+  --btn-hov:#1B3126;
+  --btn-hov-fg:#EAF3ED;
+  --band-bg:#050C08;
+  --stats-bg:#0C2218;
+  --stats-line:#1F4A38;
+  --footer-bg:#050C08;
+  --shadow:0 20px 50px rgba(0,0,0,.5);
+}
 @media (prefers-color-scheme: dark){
-  :root{
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
     --bg:#0A1410;
     --fg:#EAF3ED;
     --mute:#9DB5A6;
@@ -58,6 +79,7 @@
     --shadow:0 20px 50px rgba(0,0,0,.5);
   }
 }
+:root[data-theme="light"]{color-scheme:light}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -340,7 +362,8 @@ fieldset.radios label{display:flex;gap:8px;align-items:center;min-height:44px}
 .basket-box{margin-bottom:20px;padding:14px 16px;border-radius:12px;background:var(--tint)}
 .basket-box b{display:block;font-size:13px;margin-bottom:8px}
 .err{color:#C0341D;font-weight:600;margin:12px 0 0;min-height:1.4em}
-@media (prefers-color-scheme:dark){.err{color:#FF8A73}}
+:root[data-theme="dark"] .err{color:#FF8A73}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#FF8A73}}
 .wnav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
 .wdone{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;padding-block:24px}
 .wdone .ok{width:64px;height:64px;border-radius:50%;background:var(--green);color:var(--on-green);display:grid;place-items:center}
@@ -453,3 +476,13 @@ footer{background:var(--footer-bg);color:#B8D3C4;font-size:15px}
 [lang=ar] .hero h1{font-size:clamp(46px,9.4vw,160px);line-height:1.12}
 [lang=ar] .phero h1{font-size:clamp(40px,7.4vw,120px)}
 @media (max-width:760px){[lang=ar] .hero h1{font-size:15vw}}
+
+/* theme toggle */
+.theme-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer;display:grid;place-items:center;padding:0;flex:none;transition:background .2s,color .2s}
+.theme-btn:hover{background:var(--fg);color:var(--bg)}
+.theme-btn svg{width:20px;height:20px}
+.theme-btn .i-sun{display:none}
+:root[data-theme="dark"] .theme-btn .i-sun{display:block}
+:root[data-theme="dark"] .theme-btn .i-moon{display:none}
+.drawer .theme-btn{border-color:var(--on-green);color:var(--on-green)}
+.drawer .theme-btn:hover{background:var(--on-green);color:var(--green)}

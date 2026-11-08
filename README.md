@@ -40,6 +40,6 @@ Generated and git-ignored: `index.html`, the page folders (`services/`, `catalog
 
 ## Themes and languages
 
-Light and dark follow the system setting. French is the default (root URLs); English lives under `/en/` and Arabic (right-to-left) under `/ar/`.
+Light and dark follow the system setting until the visitor uses the toggle in the header; the choice is then remembered (`localStorage`, key `vieva-theme`) and applied before first paint. French is the default (root URLs); English lives under `/en/` and Arabic (right-to-left) under `/ar/`.
 
 Stack: Vite, three.js 0.128, GSAP 3.12. Fonts from Google Fonts.
