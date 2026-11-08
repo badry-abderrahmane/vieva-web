@@ -55,7 +55,10 @@ try {
   await ev("document.getElementById('email').value='a@b.co'");
   await ev("document.getElementById('wnext').click()");
   ok('valid form shows confirmation', (await ev("!document.getElementById('wdone').hidden")) === true);
-  ok('preview note shown without endpoint', (await ev("!document.getElementById('wpreview').hidden")) === true);
+  const wa = await ev("document.getElementById('wasend').href");
+  ok('WhatsApp button links to the chat', wa.startsWith('https://wa.me/212622878187?text='), wa.slice(0, 60));
+  if (process.env.E2E_VERBOSE) console.log('--- message ---\n' + decodeURIComponent(wa.split('text=')[1]) + '\n---');
+  ok('WhatsApp message carries the contact name', decodeURIComponent(wa).includes('Test') && decodeURIComponent(wa).includes('a@b.co'), decodeURIComponent(wa).slice(0, 200));
 
   // mobile menu
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 2, mobile: true });

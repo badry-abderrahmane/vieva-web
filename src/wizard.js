@@ -113,7 +113,7 @@ export function initWizard() {
     ['install', 'mode'].forEach((k) => { const r = form.querySelector(`input[name=${k}]:checked`); data.append(k, r ? r.value : ''); });
     data.append('basket', JSON.stringify(getBasket()));
     files.forEach((file) => data.append('files', file, file.name));
-    if (!ENDPOINT) { finish(true); return; }
+    if (!ENDPOINT) { finishWhatsApp(); return; }
     next.disabled = true;
     try {
       const res = await fetch(ENDPOINT, { method: 'POST', body: data });
@@ -126,16 +126,57 @@ export function initWizard() {
     } finally { next.disabled = false; }
   }
 
-  function finish(preview) {
+  /* WhatsApp mode (default): build a ready-to-send message; the visitor taps the button to open the chat. */
+  function waMessage() {
+    const names = cfg.services.filter((s) => picked.has(s.slug)).map((s) => s.name).join(', ');
+    const dims = val('width') && val('height') ? `${val('width')} × ${val('height')} cm` : '';
+    const inst = form.querySelector('input[name=install]:checked');
+    const mode = form.querySelector('input[name=mode]:checked');
+    const line = (label, v) => (v ? `${label}: ${v}` : '');
+    const details = [
+      line(f.steps[0], names),
+      line(f.product, val('product')),
+      line(`${f.width.split(' (')[0]} × ${f.height.split(' (')[0]}`, dims),
+      line(f.qty, val('qty')),
+      line(f.material, val('material')),
+      line(f.install.replace(/\s*\?$/, ''), inst ? (inst.value === 'yes' ? f.yes : f.no) : ''),
+      line(f.date, val('date')),
+      line(f.city, val('city')),
+      line(f.mode, mode ? (mode.value === 'pickup' ? f.pickup : f.delivery) : ''),
+      line(f.comment, val('comment')),
+    ].filter(Boolean);
+    const contact = [
+      line(f.name, val('name')),
+      line(f.company, val('company')),
+      line(f.role, val('role')),
+      line(f.phone, val('phone')),
+      line(f.email, val('email')),
+      line('ICE', val('ice')),
+    ].filter(Boolean);
+    return [cfg.waMsg, details.join('\n'), contact.join('\n')].filter(Boolean).join('\n\n');
+  }
+  function finishWhatsApp() {
+    const a = document.getElementById('wasend');
+    a.href = `https://wa.me/${cfg.wa}?text=${encodeURIComponent(waMessage())}`;
+    a.hidden = false;
+    done.querySelector('h2').textContent = f.waTitle;
+    done.querySelector('p').textContent = f.waText;
+    const note = document.getElementById('wpreview');
+    document.getElementById('wfiles').textContent = files.map((x) => x.name).join(', ');
+    finish(files.length > 0);
+    track('quote_ready');
+  }
+
+  function finish(showFiles) {
     stepsBox.hidden = true;
     done.hidden = false;
-    document.getElementById('wpreview').hidden = !preview;
+    document.getElementById('wpreview').hidden = !showFiles;
     done.querySelector('h2').tabIndex = -1;
     done.querySelector('h2').focus();
   }
   document.getElementById('wrestart').addEventListener('click', () => {
     form.reset(); files = []; paintFiles(); picked.clear(); picked.add('impression-grand-format'); paintServices();
-    done.hidden = true; stepsBox.hidden = false; started = false; show(1);
+    done.hidden = true; document.getElementById('wasend').hidden = true; stepsBox.hidden = false; started = false; show(1);
   });
 
   show(1);

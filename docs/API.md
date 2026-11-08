@@ -1,3 +1,5 @@
+> Optional. The site currently runs WhatsApp-only: with `VITE_QUOTE_ENDPOINT` empty the quote form prepares a WhatsApp message and no server is involved. Use this contract only if lead storage is added later.
+
 # Quote API contract
 
 The front end posts quote requests to `VITE_QUOTE_ENDPOINT`. `server/index.mjs` is a dependency-free reference implementation (Node 20+). The production target in the specification is Laravel 11 with a Filament admin. Implement the same contract there.

@@ -378,7 +378,8 @@ function devisBody(lang) {
 
       <div class="wdone" id="wdone" hidden>
         <span class="ok">${ICON.check}</span><h2>${esc(f.doneTitle)}</h2><p style="color:var(--mute);max-width:44ch;margin:0">${esc(f.doneText)}</p>
-        <p class="mono" id="wpreview" style="color:var(--mute);max-width:52ch" hidden>${esc(f.previewNote)}</p>
+        <a class="btn g" id="wasend" href="#" rel="noopener" data-track="whatsapp_click" hidden>${ICON.wa} ${esc(f.waBtn)}</a>
+        <p id="wpreview" style="color:var(--mute);max-width:52ch;margin:0" hidden>${esc(f.waAttach)} <b id="wfiles"></b></p>
         <button class="btn ghost" type="button" id="wrestart">${esc(f.restart)}</button>
       </div>
     </form>

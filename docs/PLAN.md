@@ -18,7 +18,7 @@ Goal: a French-first B2B site that turns corporate event and marketing buyers in
 | 2. Core pages | Services hub and six service pages, catalogue and 12 product pages, portfolio and 3 case pages, About, Contact, legal and privacy | Done (placeholder content) |
 | 3. Quote flow | 5-step form with validation, file picking, quote basket, WhatsApp pre-filled messages, analytics events | Done (front end) |
 | 4. Languages and SEO | FR / EN / AR with RTL, hreflang, canonical, schema.org, sitemap, robots, Open Graph | Done |
-| 5. Back end | Reference API with lead inbox and CSV (done). Laravel + Filament production build and Ageno sync | Reference done; production not started |
+| 5. Back end | Decision: WhatsApp only for now. The quote form builds a ready-to-send WhatsApp message. No database, no admin, no Ageno link. | Done (scoped down) |
 | 6. Launch | Content, photos, QA, Lighthouse, DNS | Blocked on client content; QA tooling done |
 
 Dark and light themes follow the system setting (`prefers-color-scheme`) on every page.
@@ -26,14 +26,15 @@ Dark and light themes follow the system setting (`prefers-color-scheme`) on ever
 ## Done in phases 2 to 6
 
 - `scripts/generate.mjs` renders 30 routes in 3 languages (90 pages) from `src/data`. `npm run check` verifies links, SEO tags and ids on the build output. `npm run e2e` drives basket, quote form, filters, mobile menu and RTL in Chrome.
-- `server/index.mjs` implements the quote API (see `docs/API.md`).
+- The quote form ends on a "Send on WhatsApp" button with the full request pre-filled. Files are listed so the visitor attaches them in the chat.
+- `server/index.mjs` is an optional quote API with a lead inbox (see `docs/API.md`). It is not used while `VITE_QUOTE_ENDPOINT` is empty.
 
 ## Still open
 
 - Real photos, texts, opening hours, founding year, product sizes and lead times. Every placeholder is shown in `[brackets]`.
 - Arabic and English copy was written for this build and should be reviewed by a native speaker.
 - Privacy and legal text is indicative and needs legal review.
-- Production back end (Laravel + Filament), WhatsApp and email notifications, Ageno sync.
+- Later, if wanted: a back end for lead storage (Laravel + Filament or the reference API), email notifications, and an Ageno link. All out of scope for now.
 - Hosting, DNS, Google Business Profile, analytics tool choice, Lighthouse audit on the live host.
 - Newsletter opt-in (in the spec, not built).
 
@@ -59,7 +60,7 @@ Dark and light themes follow the system setting (`prefers-color-scheme`) on ever
 - Final vector logo (the current one is recreated from a screenshot).
 - 20 to 40 project photos with sector and a one-line brief.
 - Opening hours, founding year, team photo, city and service area.
-- Confirmation of the WhatsApp number (the mobile number in the footer is used as a placeholder).
+- WhatsApp number: confirmed by the client (+212 6 22 87 81 87).
 - Permission to show client logos.
 
 ## Open decisions

@@ -17,7 +17,7 @@ npm run e2e      # Chrome smoke test: basket, quote form, mobile menu, RTL
 npm run api      # reference quote API on :8787 (see docs/API.md)
 ```
 
-Copy `.env.example` to `.env` to connect the quote form to the API (`VITE_QUOTE_ENDPOINT`). Without it the form runs in preview mode and sends nothing.
+Quote requests go through WhatsApp: the form ends on a button that opens a chat with the request pre-filled (number set in `src/data/ui.js`). No server is needed. An optional quote API exists (`npm run api`, `docs/API.md`); set `VITE_QUOTE_ENDPOINT` in `.env` to use it.
 
 ## Structure
 
