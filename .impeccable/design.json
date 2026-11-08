@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T00:00:00Z",
+  "title": "Design System: Vieva Services",
+  "extensions": {
+    "colorMeta": {
+      "green": { "role": "primary", "displayName": "Press Green", "canonical": "#00A857", "tonalRamp": ["#04281A", "#064A2C", "#00663A", "#008F49", "#00A857", "#12BE6A", "#7FDDAB", "#CDF0DC"] },
+      "green-hi": { "role": "primary", "displayName": "Lit Green", "canonical": "#12BE6A", "tonalRamp": ["#064A2C", "#008F49", "#00A857", "#12BE6A", "#3DDC8A", "#7FDDAB", "#B5EDCF", "#E3F8ED"] },
+      "green-lo": { "role": "primary", "displayName": "Shadow Green", "canonical": "#008F49", "tonalRamp": ["#04281A", "#064A2C", "#00663A", "#008F49", "#00A857", "#12BE6A", "#7FDDAB", "#CDF0DC"] },
+      "green-deep": { "role": "primary", "displayName": "Deep Forest", "canonical": "#064A2C", "tonalRamp": ["#04170E", "#04281A", "#064A2C", "#00663A", "#008F49", "#00A857", "#7FDDAB", "#CDF0DC"] },
+      "green-text": { "role": "primary", "displayName": "Proof Green Text", "canonical": "#00663A", "tonalRamp": ["#04281A", "#064A2C", "#00663A", "#008F49", "#00A857", "#3DDC8A", "#7FDDAB", "#CDF0DC"] },
+      "ink": { "role": "neutral", "displayName": "Ink Black", "canonical": "#06110B", "tonalRamp": ["#06110B", "#0F2218", "#223A2D", "#46564D", "#7FA38F", "#B8D3C4", "#DDE8E0", "#F2F7F3"] },
+      "ink-green": { "role": "neutral", "displayName": "Forest Ink", "canonical": "#04281A", "tonalRamp": ["#04170E", "#04281A", "#0C2218", "#1F4A38", "#4C6F5C", "#7FA38F", "#B8D3C4", "#E3F8ED"] },
+      "paper": { "role": "neutral", "displayName": "Proof Paper", "canonical": "#F2F7F3", "tonalRamp": ["#46564D", "#7FA38F", "#B8D3C4", "#BCD0C3", "#DDE8E0", "#EAF3ED", "#F2F7F3", "#FFFFFF"] },
+      "surface": { "role": "neutral", "displayName": "White Stock", "canonical": "#FFFFFF", "tonalRamp": ["#BCD0C3", "#CDF0DC", "#DDE8E0", "#EAF3ED", "#F2F7F3", "#F7FAF8", "#FBFDFC", "#FFFFFF"] },
+      "mute": { "role": "neutral", "displayName": "Mute Moss", "canonical": "#46564D", "tonalRamp": ["#06110B", "#223A2D", "#2E4036", "#46564D", "#6B7D73", "#8FA397", "#B8D3C4", "#DDE8E0"] },
+      "line": { "role": "neutral", "displayName": "Hairline Sage", "canonical": "#BCD0C3", "tonalRamp": ["#46564D", "#7FA38F", "#9DB5A6", "#BCD0C3", "#CBDBD0", "#DDE8E0", "#EAF3ED", "#F2F7F3"] },
+      "tint": { "role": "neutral", "displayName": "Tint Mint", "canonical": "#CDF0DC", "tonalRamp": ["#0F2218", "#064A2C", "#3DDC8A", "#7FDDAB", "#B5EDCF", "#CDF0DC", "#E3F8ED", "#F2FBF6"] },
+      "night": { "role": "neutral", "displayName": "Night Field", "canonical": "#0A1410", "tonalRamp": ["#050C08", "#0A1410", "#0F2218", "#111F17", "#223A2D", "#46564D", "#9DB5A6", "#EAF3ED"] },
+      "night-surface": { "role": "neutral", "displayName": "Night Surface", "canonical": "#111F17", "tonalRamp": ["#050C08", "#0A1410", "#0F2218", "#111F17", "#1B3126", "#223A2D", "#46564D", "#9DB5A6"] },
+      "night-text": { "role": "neutral", "displayName": "Night Text", "canonical": "#EAF3ED", "tonalRamp": ["#46564D", "#7FA38F", "#9DB5A6", "#B8D3C4", "#D0E0D6", "#DDE8E0", "#EAF3ED", "#F2F7F3"] },
+      "night-green-text": { "role": "primary", "displayName": "Night Green Text", "canonical": "#3DDC8A", "tonalRamp": ["#064A2C", "#008F49", "#00A857", "#12BE6A", "#3DDC8A", "#7FDDAB", "#B5EDCF", "#E3F8ED"] },
+      "band-mute": { "role": "neutral", "displayName": "Band Mute", "canonical": "#B8D3C4", "tonalRamp": ["#1F4A38", "#4C6F5C", "#7FA38F", "#9DB5A6", "#B8D3C4", "#CBDBD0", "#DDE8E0", "#F2F7F3"] },
+      "band-line": { "role": "neutral", "displayName": "Band Line", "canonical": "#4C6F5C", "tonalRamp": ["#0F2218", "#1F4A38", "#2E5A46", "#4C6F5C", "#6B8E7B", "#7FA38F", "#9DB5A6", "#B8D3C4"] },
+      "error": { "role": "semantic", "displayName": "Error Red", "canonical": "#C0341D", "tonalRamp": ["#4A130A", "#7A210F", "#A12B18", "#C0341D", "#E0573F", "#FF8A73", "#FFB8A8", "#FFE3DC"] },
+      "error-night": { "role": "semantic", "displayName": "Error Red (dark theme)", "canonical": "#FF8A73", "tonalRamp": ["#7A210F", "#A12B18", "#C0341D", "#E0573F", "#FF8A73", "#FFB8A8", "#FFD3C8", "#FFE3DC"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Home hero wordmark lines only; width axis 86, heavy, tight." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2 and page hero h1 at poster scale." },
+      "title": { "displayName": "Title", "purpose": "Card titles, service rows, step titles." },
+      "body": { "displayName": "Body", "purpose": "Reading text at 17px, 1.55; 62ch measure." },
+      "label": { "displayName": "Label", "purpose": "Uppercase mono for meta, spec keys, pills, language switch." }
+    },
+    "shadows": [
+      { "name": "float-light", "value": "0 20px 50px rgba(6,17,11,.18)", "purpose": "Floating layers only (mega menu, service peek, hovered visual, WhatsApp button) in light theme." },
+      { "name": "float-dark", "value": "0 20px 50px rgba(0,0,0,.5)", "purpose": "Same roles in dark theme." },
+      { "name": "ring-inset", "value": "inset 0 0 0 1.5px var(--fg)", "purpose": "Outline treatment for pills, chips and ghost buttons (inset box-shadow used as a border)." }
+    ],
+    "motion": [
+      { "name": "ease-ink", "value": "cubic-bezier(.2,.7,.2,1)", "purpose": "Wipes, reveals, row expansion, nav underline; 0.35s to 0.9s." },
+      { "name": "marquee", "value": "linear infinite 40s / 60s / 70s", "purpose": "Brand marquee and sector ribbon; off under reduced motion." },
+      { "name": "state-fast", "value": "0.2s to 0.3s ease", "purpose": "Color, border and background state changes on chips, fields, toggles." }
+    ],
+    "breakpoints": [
+      { "name": "nav-collapse", "value": "980px" },
+      { "name": "phone", "value": "760px" },
+      { "name": "narrow", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink pill whose hover color wipes up from the bottom.",
+      "html": "<button class=\"ds-btn\">Request a quote</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:99px;background:var(--btn-bg,#06110B);color:var(--btn-fg,#F2F7F3);font:600 16px/1 inherit;border:0;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:color .3s}.ds-btn::before{content:\"\";position:absolute;inset:0;background:var(--btn-hov,#F2F7F3);transform:translateY(101%);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:-1}.ds-btn:hover{color:var(--btn-hov-fg,#06110B)}.ds-btn:hover::before{transform:none}.ds-btn:focus-visible{outline:3px solid var(--green-text,#00663A);outline-offset:3px}"
+    },
+    {
+      "name": "Green Button",
+      "kind": "button",
+      "refersTo": "button-green",
+      "description": "Press Green pill with ink text for conversion actions on paper or ink bands.",
+      "html": "<button class=\"ds-btn-g\">Send on WhatsApp</button>",
+      "css": ".ds-btn-g{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:99px;background:#00A857;color:#06110B;font:600 16px/1 inherit;border:0;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:color .3s}.ds-btn-g::before{content:\"\";position:absolute;inset:0;background:#06110B;transform:translateY(101%);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:-1}.ds-btn-g:hover{color:#00A857}.ds-btn-g:hover::before{transform:none}.ds-btn-g:focus-visible{outline:3px solid #00663A;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent pill with a 2px inset ring that fills on hover.",
+      "html": "<button class=\"ds-btn-ghost\">See services</button>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:99px;background:transparent;color:var(--fg,#06110B);font:600 16px/1 inherit;border:0;cursor:pointer;box-shadow:inset 0 0 0 2px var(--fg,#06110B);position:relative;overflow:hidden;isolation:isolate;transition:color .3s}.ds-btn-ghost::before{content:\"\";position:absolute;inset:0;background:var(--fg,#06110B);transform:translateY(101%);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:-1}.ds-btn-ghost:hover{color:var(--bg,#F2F7F3)}.ds-btn-ghost:hover::before{transform:none}.ds-btn-ghost:focus-visible{outline:3px solid var(--green-text,#00663A);outline-offset:3px}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Pill toggle used for catalogue filters; selected fills with ink.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"false\">Banners</button> <button class=\"ds-chip\" aria-pressed=\"true\">Signage</button>",
+      "css": ".ds-chip{font:600 14px/1 inherit;padding:10px 18px;min-height:44px;border-radius:99px;border:0;background:transparent;color:var(--fg,#06110B);box-shadow:inset 0 0 0 1.5px var(--line,#BCD0C3);cursor:pointer;transition:background .2s,color .2s}.ds-chip:hover{box-shadow:inset 0 0 0 1.5px var(--fg,#06110B)}.ds-chip[aria-pressed=true]{background:var(--btn-bg,#06110B);color:var(--btn-fg,#F2F7F3);box-shadow:none}.ds-chip:focus-visible{outline:3px solid var(--green-text,#00663A);outline-offset:3px}"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "product-card",
+      "description": "Flat surface card holding a halftone visual, title, meta and actions.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-shot\"></div><div class=\"ds-meta\">Large format</div><h3>Roll-up banner</h3><p>Aluminium base, printed on 440g PVC.</p></article>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:12px;background:var(--surface,#fff);border:1px solid var(--line,#BCD0C3);border-radius:14px;padding:14px 14px 18px;color:var(--fg,#06110B);max-width:300px}.ds-shot{aspect-ratio:4/5;border-radius:8px;background:radial-gradient(circle,#00A857 34%,transparent 36%) 0 0/20px 20px,radial-gradient(circle,#064A2C 34%,transparent 36%) 10px 10px/20px 20px,#06110B}.ds-meta{font:400 11px/1 var(--f-mono,monospace);letter-spacing:.06em;text-transform:uppercase;color:var(--mute,#46564D)}.ds-card h3{margin:0;font-size:22px;line-height:1.1;letter-spacing:-.02em;font-weight:600}.ds-card p{margin:0;font-size:15px;color:var(--mute,#46564D)}"
+    },
+    {
+      "name": "Form Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Wizard text field on the surface color with a line border; green focus.",
+      "html": "<label class=\"ds-fl\">Company<input class=\"ds-input\" placeholder=\"Your company\"></label>",
+      "css": ".ds-fl{display:flex;flex-direction:column;gap:6px;font-weight:500;color:var(--fg,#06110B)}.ds-input{font:inherit;color:var(--fg,#06110B);background:var(--surface,#fff);padding:12px 14px;border:1px solid var(--line,#BCD0C3);border-radius:10px;min-height:44px}.ds-input:focus{outline:2px solid #00A857;outline-offset:1px;border-color:#00A857}"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Nav links with a 3px green underline scaling in from the leading edge.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">Catalogue</a><a href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px;font:500 15px/1 inherit;padding:14px 0;border-bottom:1px solid var(--line,#BCD0C3)}.ds-nav a{position:relative;text-decoration:none;color:var(--fg,#06110B)}.ds-nav a::after{content:\"\";position:absolute;left:0;right:0;bottom:-4px;height:3px;background:#00A857;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}.ds-nav a:hover::after,.ds-nav a[aria-current]::after{transform:scaleX(1)}.ds-nav a:focus-visible{outline:3px solid var(--green-text,#00663A);outline-offset:3px}"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "Poster-size list row that floods green on hover and unfolds its description.",
+      "html": "<a class=\"ds-svc\" href=\"#\"><div class=\"ds-in\"><h3>Large format</h3><span class=\"ds-tag\">01</span><div class=\"ds-desc\"><p>Banners, vinyl, adhesive and rigid boards.</p></div></div></a>",
+      "css": ".ds-svc{display:block;text-decoration:none;color:var(--fg,#06110B);border-top:2px solid var(--fg,#06110B);border-bottom:1px solid var(--line,#BCD0C3);transition:background .35s,color .35s}.ds-in{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center;padding:24px 32px}.ds-svc h3{margin:0;font-size:56px;line-height:1;letter-spacing:-.035em;font-weight:600;transition:transform .5s cubic-bezier(.2,.7,.2,1)}.ds-tag{font:400 12px/1 var(--f-mono,monospace);letter-spacing:.08em;color:var(--mute,#46564D)}.ds-desc{grid-column:1/-1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.7,.2,1)}.ds-desc p{overflow:hidden;margin:0;max-width:56ch;font-size:18px}.ds-svc:hover,.ds-svc:focus-visible{background:#00A857;color:#06110B}.ds-svc:hover .ds-tag{color:#06110B}.ds-svc:hover h3{transform:translateX(18px)}.ds-svc:hover .ds-desc,.ds-svc:focus-visible .ds-desc{grid-template-rows:1fr}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Proof Sheet",
+    "overview": "The site behaves like a press proof pinned up in the workshop: a flat field of saturated brand green, ink-black type, halftone dots and crop marks. Everything the visitor sees comes from the print trade the company works in (registration corners on the hero, halftone dot fills on every product visual, a dotted overprint on the green heroes) rather than from a generic SaaS kit. The green is the paper; ink and near-white are the only other voices.\n\nDensity is bold and poster-like at display scale and quiet at reading scale: huge condensed Bricolage headlines sit on generous section padding, while body copy stays at 17px in a narrow measure. Interaction is wipe-and-fill (a color slides up through a button, a service row floods green on hover) so motion reads like ink being laid down, not like a glow. Two themes share the same green; only the neutrals and the green used as text change. PRODUCT.md commits to AA contrast in both themes, which is why green as text is a separate, darker (light) or lighter (dark) token from the brand green.",
+    "keyCharacteristics": [
+      "Brand green (#00A857) is fixed in both themes and floods entire bands (hero, page hero, sector ribbon, mobile drawer, hovered service rows).",
+      "Ink-black and pale green-white buttons; pill shape everywhere interactive.",
+      "Condensed variable display type (width axis 80-100) at poster scale with tight negative tracking.",
+      "Halftone dot pattern is the only imagery language until real photos exist.",
+      "Flat surfaces, hairline green-grey rules, one soft shadow reserved for floating things.",
+      "Full RTL/Arabic parity; Arabic swaps to IBM Plex Sans Arabic and drops tracking."
+    ],
+    "rules": [
+      { "name": "The Ink-On-Green Rule", "body": "Text on Press Green is Ink Black (#06110B). White on #00A857 fails contrast and is never used.", "section": "colors" },
+      { "name": "The Two Greens Rule", "body": "Green as a fill is Press Green; green as text or a focus ring is Proof Green Text. Never swap them.", "section": "colors" },
+      { "name": "The One Hue Rule", "body": "There is no second accent. Hierarchy comes from fill vs. ink vs. outline, not from new colors.", "section": "colors" },
+      { "name": "The Width-Axis Rule", "body": "Display sizes narrow the variable width axis (80 to 88) so big words fit; small headings reset to wdth 100.", "section": "typography" },
+      { "name": "The Arabic Reset Rule", "body": "In [lang=ar] letter-spacing is zero and width-axis settings are removed; never apply negative tracking to Arabic.", "section": "typography" },
+      { "name": "The Flat-Until-Floating Rule", "body": "A surface gets the shadow only if it overlays or lifts off other content. Resting cards use a 1px line, never a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do set text on Press Green in Ink Black (#06110B).",
+      "Do use Proof Green Text (#00663A light, #3DDC8A dark) for any green text, links and focus rings.",
+      "Do make every interactive control a pill with at least 44px height (48px for buttons) and a color-wipe hover.",
+      "Do build placeholder imagery from the halftone dot pattern in the green family until real photos arrive.",
+      "Do define colors per theme through the semantic tokens (--bg, --fg, --surface, --line, --mute, --tint) and keep green fixed.",
+      "Do use logical properties and mirror directional details for RTL; keep tracking at 0 in Arabic.",
+      "Do honor prefers-reduced-motion (marquees stop, transitions near zero)."
+    ],
+    "donts": [
+      "Don't put white text on Press Green.",
+      "Don't introduce a second accent hue.",
+      "Don't add shadows to resting cards; reserve the shadow for floating layers.",
+      "Don't use negative letter-spacing or width-axis narrowing on Arabic or on small headings.",
+      "Don't hard-code hex values in components when a semantic token exists (see drift noted in the report).",
+      "Don't invent proof imagery (photos, logos, testimonials); show the halftone placeholder instead."
+    ]
+  }
+}

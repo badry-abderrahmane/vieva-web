@@ -81,7 +81,8 @@ export function initWizard() {
     pct.textContent = `${n * 20}%`;
     fill.style.width = `${n * 20}%`;
     prev.style.visibility = n === 1 ? 'hidden' : 'visible';
-    next.textContent = n === 5 ? f.send : f.next;
+    next.textContent = n === 5 ? (ENDPOINT ? f.send : f.prepare) : f.next;
+    save();
     err.textContent = '';
     const h = steps[n - 1].querySelector('h2');
     if (h && started) { h.tabIndex = -1; h.focus({ preventScroll: false }); }
@@ -91,6 +92,7 @@ export function initWizard() {
     if (n === 1 && !picked.size) return f.errService;
     if (n === 5) {
       if (!val('name') || (!val('phone') && !val('email'))) return f.errContact;
+      if (val('phone') && val('phone').replace(/\D/g, '').length < 8) return f.errPhone;
       if (val('email') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))) return f.errEmail;
     }
     return '';
@@ -168,6 +170,7 @@ export function initWizard() {
   }
 
   function finish(showFiles) {
+    clearDraft();
     stepsBox.hidden = true;
     done.hidden = false;
     document.getElementById('wpreview').hidden = !showFiles;
@@ -175,9 +178,34 @@ export function initWizard() {
     done.querySelector('h2').focus();
   }
   document.getElementById('wrestart').addEventListener('click', () => {
-    form.reset(); files = []; paintFiles(); picked.clear(); picked.add('impression-grand-format'); paintServices();
+    form.reset(); clearDraft(); files = []; paintFiles(); picked.clear(); picked.add('impression-grand-format'); paintServices();
     done.hidden = true; document.getElementById('wasend').hidden = true; stepsBox.hidden = false; started = false; show(1);
   });
 
-  show(1);
+  /* draft: survive a refresh or an app switch (text fields, radios, step). Files cannot be kept. */
+  const KEY = 'vieva-quote-draft';
+  const fields = [...form.querySelectorAll('input:not([type=file]):not([type=radio]):not([name=website]), select, textarea')];
+  function save() {
+    try {
+      const d = { step, v: {}, r: {} };
+      fields.forEach((el) => { if (el.id) d.v[el.id] = el.value; });
+      ['install', 'mode'].forEach((k) => { const r = form.querySelector(`input[name=${k}]:checked`); if (r) d.r[k] = r.value; });
+      localStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) { /* storage unavailable: the form still works */ }
+  }
+  function restore() {
+    try {
+      const d = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (!d) return 1;
+      fields.forEach((el) => { if (el.id && d.v && d.v[el.id] != null && !el.value) el.value = d.v[el.id]; });
+      Object.entries(d.r || {}).forEach(([k, v]) => { const r = form.querySelector(`input[name=${k}][value=${v}]`); if (r) r.checked = true; });
+      return Math.min(Math.max(Number(d.step) || 1, 1), 5);
+    } catch (e) { return 1; }
+  }
+  const clearDraft = () => { try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ } };
+  form.addEventListener('input', save);
+  form.addEventListener('change', save);
+
+  const resume = restore();
+  show(resume > 1 && !q.length ? resume : 1);
 }

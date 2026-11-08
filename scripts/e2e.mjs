@@ -52,7 +52,15 @@ try {
   await ev("document.getElementById('name').value='Test';document.getElementById('email').value='bad'");
   await ev("document.getElementById('wnext').click()");
   ok('bad email is rejected', (await ev("document.getElementById('werr').textContent")).length > 0);
-  await ev("document.getElementById('email').value='a@b.co'");
+  ok('last step button names WhatsApp', /whatsapp/i.test(await ev("document.getElementById('wnext').textContent")), await ev("document.getElementById('wnext').textContent"));
+  await ev("document.getElementById('phone').value='123';document.getElementById('wizard').dispatchEvent(new Event('input'))");
+  await ev("document.getElementById('wnext').click()");
+  ok('short phone is rejected', (await ev("document.getElementById('werr').textContent")).length > 0 && (await ev("document.getElementById('wdone').hidden")) === true);
+  await go('/devis/');
+  ok('draft survives a reload', (await ev("document.getElementById('name').value")) === 'Test' && (await step()).includes('5'), await step());
+  ok('footer links are at least 44px tall', (await ev("Math.min(...[...document.querySelectorAll('.foot a')].map(a=>a.getBoundingClientRect().height))")) >= 44);
+  ok('breadcrumb link hit area is at least 44px', (await ev("Math.min(...[...document.querySelectorAll('.crumbs a')].map(a=>a.getBoundingClientRect().height))")) >= 44);
+  await ev("document.getElementById('phone').value='';document.getElementById('email').value='a@b.co'");
   await ev("document.getElementById('wnext').click()");
   ok('valid form shows confirmation', (await ev("!document.getElementById('wdone').hidden")) === true);
   const wa = await ev("document.getElementById('wasend').href");

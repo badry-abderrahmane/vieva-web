@@ -1,0 +1,15 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans arabic",
+        "createdAt": "2026-11-08T18:56:38.522Z",
+        "reason": "assistant: documented in DESIGN.md Typography as the Arabic face; pre-existing RTL font, not user-confirmed"
+      }
+    ]
+  }
+}
