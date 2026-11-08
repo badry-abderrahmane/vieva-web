@@ -14,12 +14,28 @@ Goal: a French-first B2B site that turns corporate event and marketing buyers in
 | Phase | Scope | Status |
 |---|---|---|
 | 0. Foundation | Repo, Vite build, tokens, logo asset, docs | Done |
-| 1. Home, desktop and mobile | Hero with 3D print stand, marquee, stats, services, work, method, sectors, quote form, footer. Mobile drawer and sticky action bar. | Done |
-| 2. Core pages | Services hub and six service pages, catalogue and product detail, portfolio and case pages, About, Contact, legal | Planned |
-| 3. Quote flow | Multi-step form (5 steps), quote basket, file upload, WhatsApp pre-filled messages | Planned |
-| 4. Languages and SEO | FR / AR (RTL) / EN, hreflang, schema.org, sitemap, Open Graph | Planned |
-| 5. Back end | Laravel API + Filament admin, lead inbox, Ageno sync | Planned |
-| 6. Launch | Content, photos, QA, Lighthouse 90+, DNS | Planned |
+| 1. Home, desktop and mobile | Hero with 3D print stand, marquee, stats, services, work, method, sectors, CTA, footer. Mobile drawer and action bar. | Done |
+| 2. Core pages | Services hub and six service pages, catalogue and 12 product pages, portfolio and 3 case pages, About, Contact, legal and privacy | Done (placeholder content) |
+| 3. Quote flow | 5-step form with validation, file picking, quote basket, WhatsApp pre-filled messages, analytics events | Done (front end) |
+| 4. Languages and SEO | FR / EN / AR with RTL, hreflang, canonical, schema.org, sitemap, robots, Open Graph | Done |
+| 5. Back end | Reference API with lead inbox and CSV (done). Laravel + Filament production build and Ageno sync | Reference done; production not started |
+| 6. Launch | Content, photos, QA, Lighthouse, DNS | Blocked on client content; QA tooling done |
+
+Dark and light themes follow the system setting (`prefers-color-scheme`) on every page.
+
+## Done in phases 2 to 6
+
+- `scripts/generate.mjs` renders 30 routes in 3 languages (90 pages) from `src/data`. `npm run check` verifies links, SEO tags and ids on the build output. `npm run e2e` drives basket, quote form, filters, mobile menu and RTL in Chrome.
+- `server/index.mjs` implements the quote API (see `docs/API.md`).
+
+## Still open
+
+- Real photos, texts, opening hours, founding year, product sizes and lead times. Every placeholder is shown in `[brackets]`.
+- Arabic and English copy was written for this build and should be reviewed by a native speaker.
+- Privacy and legal text is indicative and needs legal review.
+- Production back end (Laravel + Filament), WhatsApp and email notifications, Ageno sync.
+- Hosting, DNS, Google Business Profile, analytics tool choice, Lighthouse audit on the live host.
+- Newsletter opt-in (in the spec, not built).
 
 ## Phase 1 breakdown (this commit)
 

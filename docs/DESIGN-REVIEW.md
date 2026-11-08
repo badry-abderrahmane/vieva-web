@@ -44,3 +44,20 @@ The brand green moved from `#00BF63` (sampled from the supplied logo screenshot)
 | Green on deep green | 6.5:1 | 5.1:1 |
 
 The scale is now `--green #00A857`, `--green-hi #12BE6A`, `--green-lo #008F49`. The logo (nav, footer, `public/logo.svg`, banner texture) uses the same value. Small green text on paper still uses `--green-ink #00663A` (6.5:1).
+
+## Update: dark and light themes
+
+Both themes follow `prefers-color-scheme`. Brand green, the hero and the 3D scene stay the same in both. Neutrals switch through semantic tokens (`--bg`, `--fg`, `--surface`, `--tint`, `--band-bg`, `--btn-bg`), so no component hard-codes a theme color.
+
+| Pair (dark) | Contrast |
+|---|---|
+| Text `#EAF3ED` on `#0A1410` | about 16:1 |
+| Muted `#9DB5A6` on `#0A1410` | about 8:1 |
+| Green text `#3DDC8A` on `#0A1410` | about 10:1 |
+| Logo green `#00A857` on `#0A1410` | about 6:1 |
+
+Buttons invert (light button on dark pages). Inner-page heroes, the sector band and the 3D hero stay green in both themes.
+
+## Update: Arabic (RTL)
+
+Logical properties (`inset-inline`, `border-inline`, `text-align: end`) flip the layout. Letter spacing is forced to 0 for Arabic so letters keep joining, and the headline is not split into letters. The 3D scene mirrors to the other side and the printed banner text is drawn right-to-left. Marquees stay left-to-right.
