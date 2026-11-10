@@ -1,14 +1,16 @@
 import { defineConfig } from 'vite';
-import { readdirSync, statSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 // Multi-page build: every generated index.html is an entry. Run `npm run gen` first (build and dev do it for you).
 const SKIP = new Set(['node_modules', 'dist', 'src', 'public', 'scripts', 'docs', 'server', '.git']);
 function htmlEntries(dir, out = {}) {
-  for (const name of readdirSync(dir)) {
+  // withFileTypes avoids a stat per file: Vite's temporary vite.config.js.timestamp-*.mjs can vanish mid-walk
+  for (const ent of readdirSync(dir, { withFileTypes: true })) {
+    const name = ent.name;
     if (SKIP.has(name) || name.startsWith('.')) continue;
     const p = join(dir, name);
-    if (statSync(p).isDirectory()) htmlEntries(p, out);
+    if (ent.isDirectory()) htmlEntries(p, out);
     else if (name === 'index.html') out[p.slice(resolve('.').length + 1).replace(/[\\/]/g, '_').replace(/_?index\.html$/, '') || 'index'] = p;
   }
   return out;
