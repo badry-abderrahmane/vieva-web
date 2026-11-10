@@ -24,7 +24,7 @@ Buyers send artwork files (PDF, AI, PNG, JPG up to 50 MB) or ask for design help
 
 ## Capabilities and Constraints
 
-- Static site built with Vite, vanilla JS, plain CSS tokens, three.js 0.128 (3D hero) and GSAP. 30 routes x FR/EN/AR = 90 generated pages from `src/data`.
+- Static site built with Vite, vanilla JS, plain CSS tokens; GSAP 3.15 (ScrollTrigger, DrawSVG) and Lenis drive the home page's scroll story. 30 routes x FR/EN/AR = 90 generated pages from `src/data`.
 - Quote flow: a 5-step form and a quote basket that end on a "Send on WhatsApp" button with the request pre-filled (number `+212 6 22 87 81 87`). No database, no admin, no payment. An optional reference quote API exists but is unused.
 - Light and dark themes follow the system until the visitor toggles; the choice persists.
 - Arabic is right-to-left. English and Arabic copy still needs native review. Legal and privacy text is indicative, pending legal review.
@@ -32,7 +32,7 @@ Buyers send artwork files (PDF, AI, PNG, JPG up to 50 MB) or ask for design help
 
 ## Brand Commitments
 
-Brand name on the site is "Vieva Services" (confirmed); "HS Print" / hsprint.ma is not used. The logo is a vector recreation of the supplied mark (`public/logo.svg`, reference PNG in `public/brand/`); a final vector logo is expected from the client. Brand green is `#00A857` (sampled from the logo and deliberately deepened).
+Brand name on the site is "Vieva Services" (confirmed); "HS Print" / hsprint.ma is not used. The client supplied the final vector logo (Nov 2026): black "Vieva" wordmark, a fan of five overprinted petals (yellow, blue, magenta, orange, coral), "SERVICES", a CMYK filet and the line "PRINT • EVENT • SOLUTIONS". The client's graphic charter (Cahier de Prescription Graphique) pins the palette (petal inks #FFC72C, #009EE2, #3D2385, #E6007E, #F35338 on white #FFFFFF / graphite #0B0F17), the fonts (Outfit, Plus Jakarta Sans, Tajawal, JetBrains Mono), zero-pill metadata and a numbered asymmetric services grid. The old brand green #00A857 is retired. The charter's "Guide de Design" panel is deliberately not built on the public site.
 
 ## Evidence on Hand
 

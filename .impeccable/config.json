@@ -9,6 +9,12 @@
         "value": "ibm plex sans arabic",
         "createdAt": "2026-11-08T18:56:38.522Z",
         "reason": "assistant: documented in DESIGN.md Typography as the Arabic face; pre-existing RTL font, not user-confirmed"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "tajawal",
+        "createdAt": "2026-11-10T12:06:33.495Z",
+        "reason": "client charter pasted by the user pins Tajawal as the Arabic face; DESIGN.md is pre-charter and will be rewritten at finish"
       }
     ]
   }

@@ -39,7 +39,7 @@ export function initWizard() {
   const basket = getBasket();
   if (basket.length) {
     document.getElementById('wbasket').hidden = false;
-    document.getElementById('wbasketList').innerHTML = basket.map((i) => `<span class="pill">${i.name.replace(/</g, '&lt;')}</span>`).join('');
+    document.getElementById('wbasketList').textContent = basket.map((i) => i.name).join(' · ');
     const prod = document.getElementById('product');
     if (!prod.value) prod.value = basket.map((i) => i.name).join(', ');
   }
@@ -80,6 +80,7 @@ export function initWizard() {
     label.textContent = `${f.stepOf.replace('{n}', n)} · ${f.steps[n - 1]}`;
     pct.textContent = `${n * 20}%`;
     fill.style.width = `${n * 20}%`;
+    fill.style.setProperty('--wbar-w', `${500 / n}%`); // the CMYK bar spans the whole track, revealed as the fill grows
     prev.style.visibility = n === 1 ? 'hidden' : 'visible';
     next.textContent = n === 5 ? (ENDPOINT ? f.send : f.prepare) : f.next;
     save();
